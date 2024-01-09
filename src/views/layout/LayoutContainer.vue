@@ -1,6 +1,6 @@
 <!-- eslint-disable no-undef -->
 <script setup>
-import { Management, Promotion } from '@element-plus/icons-vue'
+import { DataBoard, Files, Management, Promotion, SetUp, Setting, Ticket, TrendCharts } from '@element-plus/icons-vue'
 </script>
 
 <template>
@@ -16,8 +16,34 @@ import { Management, Promotion } from '@element-plus/icons-vue'
       >
         <el-menu-item index="/logs/view">
           <el-icon><Management /></el-icon>
-          <span>日志</span>
+          <span>接口日志查询</span>
         </el-menu-item>
+        <el-sub-menu index="/queue">
+          <template #title>
+            <el-icon><Setting /></el-icon>
+            <span>排队系统</span>
+          </template>
+          <el-menu-item index="/queue/category">
+            <el-icon><Files /></el-icon>
+            <span>类别管理</span>
+          </el-menu-item>
+          <el-menu-item index="/queue/button">
+            <el-icon><SetUp /></el-icon>
+            <span>按键管理</span>
+          </el-menu-item>
+          <el-menu-item index="/queue/ticket">
+            <el-icon><Ticket /></el-icon>
+            <span>号票管理</span>
+          </el-menu-item>
+          <el-menu-item index="/queue/priority">
+            <el-icon><TrendCharts /></el-icon>
+            <span>优先级管理</span>
+          </el-menu-item>
+          <el-menu-item index="/queue/page">
+            <el-icon><DataBoard /></el-icon>
+            <span>取号界面管理</span>
+          </el-menu-item>
+        </el-sub-menu>
         <el-menu-item index="/other/building">
           <el-icon><Promotion /></el-icon>
           <span>其他</span>
