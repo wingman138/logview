@@ -9,6 +9,10 @@ const channelMap = {
 }
 export const channelList = [
   {
+    label: '所有',
+    value: -1
+  },
+  {
     label: '营销系统',
     value: 0
   },

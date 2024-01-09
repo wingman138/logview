@@ -1,12 +1,14 @@
 import axios from 'axios'
 // import { useUserStore } from '@/stores'
 // import { ElMessage } from 'element-plus'
-import router from '@/router'
-const baseURL = 'http://localhost:3200'
-// const baseURL = 'http://localhost:8080'
+// import router from '@/router'
+//开发环境代理
+// const baseURL = '/api'
+//iis虚拟目录部署
+const baseURL = '/'
 const instance = axios.create({
   baseURL,
-  timeout: 10000
+  timeout: 60000
 })
 
 instance.interceptors.request.use(
@@ -34,9 +36,9 @@ instance.interceptors.response.use(
       message: err.response?.data.data || '服务异常',
       type: 'error'
     })
-    if (err.response?.status === 401) {
-      router.push('/')
-    }
+    // if (err.response?.status === 401) {
+    //   router.push('/')
+    // }
     return Promise.reject(err)
   }
 )
