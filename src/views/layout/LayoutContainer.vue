@@ -1,6 +1,15 @@
 <!-- eslint-disable no-undef -->
 <script setup>
-import { DataBoard, Files, Management, Promotion, SetUp, Setting, Ticket, TrendCharts } from '@element-plus/icons-vue'
+import {
+  DataBoard,
+  Files,
+  Management,
+  Promotion,
+  SetUp,
+  Setting,
+  Ticket,
+  TrendCharts
+} from '@element-plus/icons-vue'
 </script>
 
 <template>

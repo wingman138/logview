@@ -18,3 +18,78 @@ body {
   transform: translateX(30px);
   opacity: 0;
 }
+// 解决drawer头部下边空白太多
+.el-drawer__header{
+  margin-bottom: 5px !important;
+}
+// 解决collapse下边空白太多
+.el-collapse-item__content{
+  padding-bottom: 5px !important;
+}
+.el-collapse {
+  --el-collapse-header-height: 30px!important;
+  --el-collapse-header-bg-color:#f5f1f1!important;
+  --el-collapse-header-border-color:white!important;
+}
+.el-collapse-item__header {
+
+  border-radius: 2px!important;
+  padding-left: 5px!important;
+  margin-bottom: 2px!important;
+}
+
+
+// 解决el-divider上下边空白太多
+.el-divider--horizontal{
+  margin: 10px 0 !important;
+}
+
+// .el-card__body{
+//   padding-top: 5px !important;
+// }
+
+.el-footer {
+  // --el-footer-padding: 0 20px;
+  --el-footer-height: 40px!important;
+}
+.el-main {
+  --el-main-padding: 15px!important;
+}
+
+.el-card {
+  --el-card-padding: 10px!important;
+}
+
+/* Table Head */
+.table-arg thead th {
+  background-color: rgb(81, 130, 187);
+  color: #fff;
+  border-bottom-width: 0;
+  }
+   
+   
+  /* Column Style */
+  // .table-arg td {
+  // color: #000;
+  // }
+  /* Heading and Column Style */
+  .table-arg  {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+  }
+   
+   
+  /* Padding and font style */
+  .table-arg td, .table-arg th {
+    border-left: 1px solid #cbcbcb;
+    border-width: 0 0 0px 1px;
+    font-size: 12px;
+    margin: 0;
+    overflow: visible;
+    padding: .2em 0.5em;
+  }
+
+ 

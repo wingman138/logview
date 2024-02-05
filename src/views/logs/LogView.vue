@@ -5,7 +5,7 @@ import { ElMessageBox } from 'element-plus'
 import * as XLSX from 'xlsx'
 import ContentBox from './components/ContentBox.vue'
 import { timeAdd } from '@/utils/format'
-import { logGetListService, logGetDetailService, logDelService } from '@/api/logs'
+import { logGetListService, logDelService } from '@/api/logs'
 import { channelList, operationList, convertDirection, convertOperation } from '@/utils/common'
 const loading = ref(false)
 const total = ref(0)
@@ -143,7 +143,18 @@ const getIndex = (index) => {
 }
 
 const exportData = (data) => {
-  const headers = ['ID', 'CHANEL', 'INOUTTAG', 'TMSTAMP', 'DATA', 'OUTPUT', 'BRANCHNO', 'PADID', 'STAFCODE', 'OPTYPE']
+  const headers = [
+    'ID',
+    'CHANEL',
+    'INOUTTAG',
+    'TMSTAMP',
+    'DATA',
+    'OUTPUT',
+    'BRANCHNO',
+    'PADID',
+    'STAFCODE',
+    'OPTYPE'
+  ]
   const excelData = data.map((item) => [
     item.id,
     item.channel,
@@ -185,7 +196,14 @@ const exportExcel = async () => {
 </script>
 <template>
   <PageContainer title="日志查询">
-    <el-form class="params" :model="params" :rules="rules" ref="formRef" size="default" label-position="left">
+    <el-form
+      class="params"
+      :model="params"
+      :rules="rules"
+      ref="formRef"
+      size="default"
+      label-position="left"
+    >
       <el-form-item label="开始时间:" prop="startTime" class="block">
         <el-date-picker
           v-model="params.startTime"
@@ -208,7 +226,12 @@ const exportExcel = async () => {
       </el-form-item>
       <el-form-item label="数据渠道:" class="block">
         <el-select v-model="params.channel">
-          <el-option v-for="item in channelList" :key="item.value" :label="item.label" :value="item.value" />
+          <el-option
+            v-for="item in channelList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="数据方向:" class="block">
@@ -220,7 +243,12 @@ const exportExcel = async () => {
       </el-form-item>
       <el-form-item label="操作类型:" class="block">
         <el-select v-model="params.operation">
-          <el-option v-for="item in operationList" :key="item.value" :label="item.label" :value="item.value" />
+          <el-option
+            v-for="item in operationList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="网点编号:" class="block">
@@ -233,8 +261,12 @@ const exportExcel = async () => {
         <el-input v-model="params.padID" placeholder="请输入设备信息"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="onSearch" type="primary" :disabled="canSubmit || loading">搜索</el-button>
-        <el-button @click="exportExcel" type="primary" :disabled="canSubmit || loading">导出excel</el-button>
+        <el-button @click="onSearch" type="primary" :disabled="canSubmit || loading">
+          搜索
+        </el-button>
+        <el-button @click="exportExcel" type="primary" :disabled="canSubmit || loading">
+          导出excel
+        </el-button>
         <el-button @click="onDelData()" type="danger" :disabled="loading">删除</el-button>
         <el-select v-model="dataDelDays">
           <el-option label="1天前数据" :value="1"></el-option>
@@ -248,7 +280,15 @@ const exportExcel = async () => {
       </el-form-item>
     </el-form>
 
-    <el-table :data="logList" stripe border height="400" :size="tableSize" style="width: 100%" v-loading="loading">
+    <el-table
+      :data="logList"
+      stripe
+      border
+      height="400"
+      :size="tableSize"
+      style="width: 100%"
+      v-loading="loading"
+    >
       <el-table-column label="序号" width="80" type="index">
         <template #default="scope">
           <span v-text="getIndex(scope.$index)"></span>
@@ -284,7 +324,13 @@ const exportExcel = async () => {
 
       <el-table-column label="查看数据" width="100">
         <template #default="{ row }">
-          <el-button :icon="Tickets" circle plain type="primary" @click="onShowDetail(row)"></el-button>
+          <el-button
+            :icon="Tickets"
+            circle
+            plain
+            type="primary"
+            @click="onShowDetail(row)"
+          ></el-button>
         </template>
       </el-table-column>
 

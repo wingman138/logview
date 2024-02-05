@@ -3,12 +3,12 @@ import axios from 'axios'
 // import { ElMessage } from 'element-plus'
 // import router from '@/router'
 //开发环境代理
-// const baseURL = '/api'
+const baseURL = '/api'
 //iis虚拟目录部署
-const baseURL = '/'
+// const baseURL = '/'
 const instance = axios.create({
   baseURL,
-  timeout: 60000
+  timeout: 300000
 })
 
 instance.interceptors.request.use(
@@ -24,16 +24,15 @@ instance.interceptors.request.use(
 )
 instance.interceptors.response.use(
   (res) => {
-    // console.log(res)
     if (res.data.state === 0) {
       return Promise.resolve(res)
     }
-    ElMessage({ message: res.data?.data || '服务异常', type: 'error' })
+    ElMessage({ message: res.data?.data || '服务异常或未登录', type: 'error' })
     return Promise.reject(res.data)
   },
   (err) => {
     ElMessage({
-      message: err.response?.data.data || '服务异常',
+      message: err.response?.data.data || '服务异常或未登录',
       type: 'error'
     })
     // if (err.response?.status === 401) {

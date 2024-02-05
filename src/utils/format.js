@@ -1,5 +1,6 @@
 import { dayjs } from 'element-plus'
 export const formatTime = (time) => dayjs(time).format('YYYY年MM月DD日')
+export const formatTimeDef = (time, formater) => dayjs(time).format(formater)
 export const timeAdd = (time, day, hour, minute, second) =>
   dayjs(time)
     .add(day, 'day')
